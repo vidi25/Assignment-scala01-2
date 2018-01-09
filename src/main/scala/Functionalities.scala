@@ -1,8 +1,8 @@
-class ScalaAssignment2 {
+class Functionalities {
 
-  def stringInterpolationOnList(inputList: List[Int]) = {
+  def stringInterpolationOnList(inputList: List[Int]): Unit = {
     val result = for(list <- inputList) yield (s"${inputList.indexOf(list)} = $list")
-    result
+    print(result)
   }
 
    def findMaximumElement(inputList: List[Int]): Int = {
@@ -23,13 +23,14 @@ class ScalaAssignment2 {
 
    }
 
-  def findNthFibonacciNumberRecursive(n: Int,prevNumber: Int = 0,nextNumber: Int = 1): Int = n match {
-    case 0 => prevNumber
-    case 1 => nextNumber
-    case _ => findNthFibonacciNumberRecursive(n - 1, nextNumber, (nextNumber + prevNumber))
-  }
+
 
   def findNthFibonacciNumber(number: Int): Int = {
+    def findNthFibonacciNumberRecursive(number: Int,prevNumber: Int = 0,nextNumber: Int = 1): Int = number match {
+      case 0 => prevNumber
+      case 1 => nextNumber
+      case _ => findNthFibonacciNumberRecursive(number - 1, nextNumber, (nextNumber + prevNumber))
+    }
     findNthFibonacciNumberRecursive(number)
   }
 
@@ -43,23 +44,24 @@ class ScalaAssignment2 {
       }
   }
 
-  def SumOfProductRecursive(number: Int): Int = {
+  def sumOfProductRecursive(number: Int): Int = {
     val rem: Int = number % 10
     if (number == 0) {
       0
     }
     else
       {
-        rem + SumOfProductRecursive(number/10)
+        rem + sumOfProductRecursive(number/10)
       }
   }
-  def SumOfProduct(n: Int): Int = {
+  def sumOfProduct(n: Int): Int = {
     val product = findProduct(n)
-    if(product > 1 && product < 9) {
+    if(product > 1 && product < 9)
+      {
       product
     }
     else{
-      product % 10 + SumOfProductRecursive(product)
+      product % 10 + sumOfProductRecursive(product)
     }
 
   }
